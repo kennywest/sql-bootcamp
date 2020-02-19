@@ -47,6 +47,11 @@ VALUES (1, 'CNH', TRUE, 99, '2020-03-19 13:51:31', '2020-03-19 13:51:31'),
        (10, 'WEBA', TRUE, 70, '2018-01-01 13:51:31', '2018-03-19 13:51:31')
 ;
 
+INSERT INTO COUNTRY (NAME, ISO_CODE)
+VALUES ('Belgium', 'BE'),
+       ('The Netherlands', 'NL')
+;
+
 INSERT INTO ADDRESS (ID, CUSTOMER_ID, STREET, NUMBER, BOX, CITY, COUNTRY)
 VALUES (1, 1, 'Léon Claeysstraat', '3a', NULL, 'Zedelgem', 'Belgium'),
        (2, 2, 'Steenweg Deinze', '108', NULL, 'Nazareth', 'Belgium'),
@@ -62,9 +67,4 @@ VALUES (1, 1, 'Léon Claeysstraat', '3a', NULL, 'Zedelgem', 'Belgium'),
        (12, 9, 'Olof Palmestraat', '1', NULL, 'Delft', 'The Netherlands'),
        (13, 10, 'Vliegtuiglaan', '10', NULL, 'Gent', 'Belgium'),
        (14, 10, 'Gentsesteenweg', '42', NULL, 'Deinze', 'Belgium')
-;
-
-INSERT INTO COUNTRY (NAME, ISO_CODE)
-VALUES ('Belgium', 'BE'),
-       ('The Netherlands', 'NL')
 ;
