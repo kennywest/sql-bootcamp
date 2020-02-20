@@ -10,5 +10,6 @@ VALUES ('A', 'Bearing 1', 10),
        ('I', 'Seat 1', 54),
        ('J', 'Seat 2', 75),
        ('K', 'Bush', 2),
-       ('L', 'Steer Rod', 11)
+       ('L', 'Steer Rod', 11),
+       ('M', '20t Gear', 33)
 ;
