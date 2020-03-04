@@ -1,0 +1,4 @@
+UPDATE CUSTOMER
+SET GRADE      = 80,
+    UPDATED_ON = now()
+WHERE NAME = 'WEBA'
