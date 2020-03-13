@@ -45,6 +45,7 @@
                                 <argument>-webAllowOthers</argument>
                                 <argument>-webPort</argument>
                                 <argument>1234</argument>
+                                <argument>-ifNotExists</argument>
                                 <!-- uncomment if you want to open h2 UI automatically -->
                                 <!-- <argument>-browser</argument> -->
                             </arguments>
