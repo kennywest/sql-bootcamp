@@ -15,3 +15,25 @@ WHERE ID IN (
     SELECT CUSTOMER_ID
     FROM ADDRESS
     WHERE COUNTRY <> 'Belgium');
+
+SELECT *
+FROM CUSTOMER
+WHERE ID IN (SELECT CUSTOMER_ID
+             FROM (SELECT CUSTOMER_ID, count(*) AS COUNT
+                   FROM SALES_ORDER
+                   GROUP BY CUSTOMER_ID
+                   ORDER BY COUNT DESC
+                   LIMIT 1));
+
+SELECT *
+FROM CUSTOMER
+WHERE ID = (
+    SELECT CUSTOMER_ID
+    FROM SALES_ORDER
+    WHERE ORDER_ID =
+          (SELECT ORDER_ID
+           FROM (SELECT sum(PRICE) AS TOTAL_PRICE, ORDER_ID
+                 FROM SALES_ORDER_LINE
+                 GROUP BY ORDER_ID
+                 ORDER BY TOTAL_PRICE DESC
+                 LIMIT 1)));
