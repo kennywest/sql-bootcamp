@@ -6,6 +6,14 @@ WHERE ID NOT IN (
     WHERE COUNTRY <> 'Belgium');
 
 SELECT *
+FROM CUSTOMER C
+WHERE NOT exists(
+        SELECT A.CUSTOMER_ID
+        FROM ADDRESS A
+        WHERE C.ID = A.CUSTOMER_ID
+          AND COUNTRY <> 'Belgium');
+
+SELECT *
 FROM CUSTOMER
 WHERE ID IN (
     SELECT CUSTOMER_ID
@@ -19,11 +27,10 @@ WHERE ID IN (
 SELECT *
 FROM CUSTOMER
 WHERE ID IN (SELECT CUSTOMER_ID
-             FROM (SELECT CUSTOMER_ID, count(*) AS COUNT
-                   FROM SALES_ORDER
-                   GROUP BY CUSTOMER_ID
-                   ORDER BY COUNT DESC
-                   LIMIT 1));
+             FROM SALES_ORDER
+             GROUP BY CUSTOMER_ID
+             ORDER BY count(*) DESC
+             LIMIT 1);
 
 SELECT *
 FROM CUSTOMER
@@ -32,8 +39,7 @@ WHERE ID = (
     FROM SALES_ORDER
     WHERE ORDER_ID =
           (SELECT ORDER_ID
-           FROM (SELECT sum(PRICE) AS TOTAL_PRICE, ORDER_ID
-                 FROM SALES_ORDER_LINE
-                 GROUP BY ORDER_ID
-                 ORDER BY TOTAL_PRICE DESC
-                 LIMIT 1)));
+           FROM SALES_ORDER_LINE
+           GROUP BY ORDER_ID
+           ORDER BY sum(PRICE) DESC
+           LIMIT 1));
